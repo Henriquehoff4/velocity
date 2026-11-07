@@ -2,6 +2,16 @@
 
 Gerenciador de downloads para Windows 11. Interface em Electron, React e TypeScript. Motor em .NET 8.
 
+## Capturas de tela
+
+![Download em andamento, com mapa do arquivo e velocidade por rede](docs/screenshots/downloads.png)
+
+![Tela de redes, com os acessos independentes encontrados](docs/screenshots/redes.png)
+
+![Histórico de downloads](docs/screenshots/historico.png)
+
+Imagens feitas com um servidor local de teste.
+
 ## Instalar
 
 Baixe na aba [Releases](https://github.com/Henriquehoff4/velocity/releases):
