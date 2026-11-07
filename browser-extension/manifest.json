@@ -1,0 +1,11 @@
+{
+  "manifest_version": 3,
+  "name": "Velocity — enviar downloads",
+  "version": "1.0.0",
+  "description": "Envia os downloads do navegador para o Velocity. Você confirma cada um dentro do aplicativo.",
+  "permissions": ["downloads", "storage"],
+  "host_permissions": ["http://127.0.0.1/*"],
+  "background": { "service_worker": "background.js" },
+  "options_ui": { "page": "options.html", "open_in_tab": false },
+  "action": { "default_title": "Velocity", "default_popup": "options.html" }
+}

@@ -1,0 +1,13 @@
+node_modules/
+dist/
+dist-electron/
+release/
+.taste-skill/
+tests/e2e/out/
+resources/tools/
+engine/publish/
+engine/**/bin/
+engine/**/obj/
+engine/**/TestResults/
+.impeccable/
+bench-results.json

@@ -1,0 +1,26 @@
+<!doctype html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="utf-8" />
+    <title>Velocity</title>
+    <style>
+      body { font: 14px system-ui, sans-serif; width: 320px; padding: 14px; margin: 0; background: #161c21; color: #e6ecef; }
+      label { display: block; margin: 0 0 10px; }
+      input[type='text'], input[type='number'], input[type='password'] { display: block; width: 100%; box-sizing: border-box; margin-top: 4px; height: 32px; padding: 0 8px; border: 1px solid #55636d; border-radius: 6px; background: #0f1418; color: inherit; }
+      input:focus-visible, button:focus-visible { outline: 2px solid #5cc8e6; outline-offset: 2px; }
+      button { height: 32px; padding: 0 12px; border: 0; border-radius: 6px; background: #5cc8e6; color: #08232c; font-weight: 600; cursor: pointer; }
+      p { margin: 0 0 10px; color: #a9b6bf; }
+      #status { min-height: 20px; margin-top: 8px; }
+    </style>
+  </head>
+  <body>
+    <p>Copie a porta e o código em Velocity, Ajustes, Captura do navegador. Cada download é confirmado dentro do aplicativo.</p>
+    <label><input id="enabled" type="checkbox" /> Enviar downloads para o Velocity</label>
+    <label>Porta<input id="port" type="number" min="1024" max="65535" /></label>
+    <label>Código de acesso<input id="token" type="password" autocomplete="off" /></label>
+    <label>Tamanho mínimo, em MB<input id="min" type="number" min="0" max="100000" /></label>
+    <button id="save" type="button">Salvar e testar</button>
+    <div id="status" role="status"></div>
+    <script src="options.js"></script>
+  </body>
+</html>

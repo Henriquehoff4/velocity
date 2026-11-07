@@ -1,0 +1,105 @@
+{
+  "name": "velocity",
+  "productName": "Velocity",
+  "version": "1.0.0",
+  "description": "Velocity, gerenciador de downloads para Windows.",
+  "private": true,
+  "license": "MIT",
+  "main": "dist-electron/main/main.js",
+  "author": "Velocity",
+  "scripts": {
+    "dev:ui": "vite",
+    "build:ui": "vite build",
+    "build:main": "tsc -p tsconfig.electron.json",
+    "build:engine": "dotnet publish engine/Velocity.Engine -c Release -o engine/publish -p:SelfContained=true -p:PublishSingleFile=true -p:PublishReadyToRun=true -p:PublishTrimmed=true -p:TrimMode=partial -p:DebugType=none -v q --nologo",
+    "build": "npm run build:ui && npm run build:main",
+    "start": "npm run build && electron .",
+    "typecheck": "tsc -p tsconfig.json --noEmit && tsc -p tsconfig.electron.json --noEmit",
+    "test": "vitest run",
+    "test:engine": "dotnet test engine/Velocity.Engine.Tests -c Release --nologo --blame-hang-timeout 30s -l \"console;verbosity=minimal\"",
+    "test:e2e": "node tests/e2e/run.mjs",
+    "test:packaged": "node tests/e2e/packaged.mjs",
+    "test:all": "npm run typecheck && npm test && npm run test:engine && npm run test:e2e",
+    "bench": "node scripts/bench.mjs",
+    "tools": "node scripts/fetch-tools.mjs",
+    "icon": "node scripts/make-icon.mjs",
+    "dist": "npm run tools && npm run build:engine && npm run build && electron-builder --win"
+  },
+  "dependencies": {
+    "@fontsource/ibm-plex-mono": "^5.2.5",
+    "@fontsource/ibm-plex-sans": "^5.2.5",
+    "react": "^19.3.1",
+    "react-dom": "^19.3.1"
+  },
+  "devDependencies": {
+    "@types/node": "^24.0.0",
+    "@types/react": "^19.2.0",
+    "@types/react-dom": "^19.2.0",
+    "@vitejs/plugin-react": "^6.1.2",
+    "electron": "^45.2.1",
+    "electron-builder": "^26.18.0",
+    "playwright-core": "^1.64.1",
+    "typescript": "^7.0.2",
+    "vite": "^8.3.5",
+    "vitest": "^5.0.5"
+  },
+  "build": {
+    "appId": "app.velocity.desktop",
+    "productName": "Velocity",
+    "directories": {
+      "output": "release",
+      "buildResources": "build"
+    },
+    "files": [
+      "dist/**",
+      "dist-electron/**",
+      "package.json"
+    ],
+    "extraResources": [
+      {
+        "from": "engine/publish/velocity-engine.exe",
+        "to": "engine/velocity-engine.exe"
+      },
+      {
+        "from": "resources/tools",
+        "to": "tools"
+      },
+      {
+        "from": "build/icon.png",
+        "to": "icon.png"
+      },
+      {
+        "from": "browser-extension",
+        "to": "browser-extension"
+      }
+    ],
+    "asar": true,
+    "electronFuses": {
+      "runAsNode": false,
+      "enableNodeOptionsEnvironmentVariable": false,
+      "enableNodeCliInspectArguments": false,
+      "onlyLoadAppFromAsar": true,
+      "enableCookieEncryption": true
+    },
+    "win": {
+      "target": [
+        "nsis",
+        "portable"
+      ],
+      "icon": "build/icon.png",
+      "signAndEditExecutable": true,
+      "requestedExecutionLevel": "asInvoker"
+    },
+    "nsis": {
+      "oneClick": false,
+      "perMachine": false,
+      "allowToChangeInstallationDirectory": true,
+      "createDesktopShortcut": true,
+      "createStartMenuShortcut": true,
+      "shortcutName": "Velocity"
+    },
+    "portable": {
+      "artifactName": "Velocity-${version}-portatil.exe"
+    }
+  }
+}
