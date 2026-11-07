@@ -6,7 +6,7 @@ Gerenciador de downloads para Windows 11. Interface em Electron, React e TypeScr
 
 Baixe na aba [Releases](https://github.com/Henriquehoff4/velocity/releases):
 
-- `Velocity Setup 1.0.0.exe`: instalador.
+- `Velocity Setup 1.0.0.exe`: instalador (na aba Releases o GitHub mostra como `Velocity.Setup.1.0.0.exe`).
 - `Velocity-1.0.0-portatil.exe`: não precisa de instalação.
 
 O executável não tem assinatura digital, então o SmartScreen pode avisar na primeira vez. Clique em "Mais informações" e "Executar assim mesmo".
